@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienestar 360° - Proyecto Bienestar y Alegría</title>
+  <meta name="description" content="Aplicación web interactiva y educativa para evaluar, reflexionar y mejorar los hábitos de bienestar integral en estudiantes.">
+  
+  <!-- Favicon / Logo -->
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVBAR / HEADER -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="logo-brand" onclick="switchView('inicio')">
+        <img src="assets/logo.jpg" alt="Bienestar 360°" class="logo-img">
+        <div class="logo-text">Bienestar <span>360°</span></div>
+      </a>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a class="nav-link active" data-view="inicio"><i class="fa-solid fa-house"></i> Inicio</a></li>
+        <li><a class="nav-link" data-view="evaluacion"><i class="fa-solid fa-clipboard-check"></i> Evaluación</a></li>
+        <li><a class="nav-link" data-view="resultados"><i class="fa-solid fa-chart-pie"></i> Resultados</a></li>
+        <li><a class="nav-link" data-view="recomendaciones"><i class="fa-solid fa-lightbulb"></i> Consejos</a></li>
+        <li><a class="nav-link" data-view="ruleta"><i class="fa-solid fa-arrows-spin"></i> Ruleta</a></li>
+        <li><a class="nav-link" data-view="retos"><i class="fa-solid fa-list-check"></i> Retos</a></li>
+        <li>
+          <div class="user-badge" id="navProfileBtn">
+            <div class="user-badge-avatar" id="userBadgeAvatar">?</div>
+            <span id="userBadgeName">Mi Perfil</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- MAIN APPLICATION VIEWS CONTAINER -->
+  <main class="container">
+
+    <!-- 1. PANTALLA DE INICIO / HERO -->
+    <section id="inicio" class="view-section active">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <i class="fa-solid fa-graduation-cap"></i> Proyecto Bienestar y Alegría
+          </div>
+          <h1 class="hero-title">
+            Conoce y Transforma tus <span>Hábitos de Bienestar</span>
+          </h1>
+          <p class="hero-description">
+            Bienestar 360° es tu espacio personal interactivo para autoevaluar tu descanso, hidratación, tiempo de pantalla, hábitos de estudio y concentración. ¡Descubre tu índice integral y desafíate cada día!
+          </p>
+          
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-lg" id="startQuizBtn">
+              <i class="fa-solid fa-play"></i> Comenzar Evaluación
+            </button>
+            <button class="btn btn-outline btn-lg" id="btnHeroRoulette" onclick="switchView('ruleta')">
+              <i class="fa-solid fa-arrows-spin"></i> Girar Ruleta de Retos
+            </button>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-number">6</div>
+              <div class="stat-label">Áreas Evaluadas</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Privado y Local</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">360°</div>
+              <div class="stat-label">Visión Integral</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="floating-card-box">
+            <div class="floating-circle-bg"></div>
+            <div class="pill-tag">
+              <i class="fa-solid fa-sparkles"></i> Bienestar 360°
+            </div>
+            
+            <div style="text-align: center; margin: 1rem 0;">
+              <img src="assets/logo.jpg" alt="Logo Bienestar 360" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; box-shadow: 0 8px 25px rgba(0,0,0,0.3); border: 3px solid var(--primary);">
+            </div>
+
+            <div style="text-align: center;">
+              <h3 style="font-size: 1.1rem; font-weight: 700;">Tu Salud y Aprendizaje</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted)">Un equilibrio cotidiano para potenciar tu vida académica.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FEATURES HIGHLIGHT GRID -->
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-wrapper" style="background: rgba(139, 92, 246, 0.15); color: var(--cat-descanso);">
+            <i class="fa-solid fa-moon"></i>
+          </div>
+          <div>
+            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem;">Descanso</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted)">Evalúa tus horas y calidad de sueño para despertar con energía.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper" style="background: rgba(14, 165, 233, 0.15); color: var(--cat-hidratacion);">
+            <i class="fa-solid fa-glass-water"></i>
+          </div>
+          <div>
+            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem;">Hidratación</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted)">Asegura el consumo óptimo de agua para el rendimiento cerebral.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper" style="background: rgba(244, 63, 94, 0.15); color: var(--cat-pantallas);">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+          </div>
+          <div>
+            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem;">Tiempo de Pantalla</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted)">Reflexiona sobre tu desconexión digital e higiene de descanso.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper" style="background: rgba(245, 158, 11, 0.15); color: var(--cat-estudio);">
+            <i class="fa-solid fa-book-open-reader"></i>
+          </div>
+          <div>
+            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem;">Técnicas de Estudio</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted)">Mejora tu planificación y pausas activas durante el repaso.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. EVALUACIÓN DE BIENESTAR (QUIZ) -->
+    <section id="evaluacion" class="view-section">
+      <div class="quiz-header">
+        <div class="quiz-meta">
+          <span><i class="fa-solid fa-clipboard-question"></i> Evaluación Bienestar 360°</span>
+          <span id="quizStepMeta">Pregunta 1 de 12</span>
+        </div>
+        <div class="quiz-progress-bar-bg">
+          <div class="quiz-progress-fill" id="quizProgressFill"></div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <div class="category-tag" id="quizCategoryTag">
+          <!-- Dynamic Category Tag -->
+        </div>
+
+        <h2 class="question-text" id="questionText">Cargando pregunta...</h2>
+
+        <div class="options-grid" id="optionsContainer">
+          <!-- Dynamic Options rendered here -->
+        </div>
+
+        <div class="quiz-controls">
+          <button class="btn btn-outline" id="quizPrevBtn" disabled>
+            <i class="fa-solid fa-arrow-left"></i> Anterior
+          </button>
+          <button class="btn btn-primary" id="quizNextBtn" disabled>
+            Siguiente <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. RESULTADO 360° -->
+    <section id="resultados" class="view-section">
+      <div class="results-header-banner">
+        <h2 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem;">
+          Tu Perfil de Bienestar <span style="color: var(--primary);">360°</span>
+        </h2>
+        <p style="color: var(--text-muted);">
+          A continuación encuentras el desglose de tu puntuación por categoría y recomendaciones para fortalecer tus hábitos cotidianos.
+        </p>
+      </div>
+
+      <div id="noResultsFallback" class="glass-card" style="text-align: center; max-width: 500px; margin: 0 auto; display: none;">
+        <i class="fa-solid fa-chart-simple" style="font-size: 3rem; color: var(--text-muted); margin-bottom: 1rem;"></i>
+        <h3 style="margin-bottom: 0.5rem;">Aún no has completado tu evaluación</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Haz clic en el botón de abajo para responder el cuestionario interactivo y generar tu índice de bienestar.</p>
+        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+          <button class="btn btn-primary" onclick="openProfileModal()">
+            <i class="fa-solid fa-play"></i> Iniciar Evaluación
+          </button>
+          <button class="btn btn-outline" onclick="resetForNewUser()">
+            <i class="fa-solid fa-user-plus"></i> Registrar Nuevo Usuario
+          </button>
+        </div>
+      </div>
+
+      <div id="resultsMainContent">
+        <div class="results-grid">
+          <!-- Gauge score card -->
+          <div class="glass-card gauge-card">
+            <h3 style="font-size: 1.1rem; color: var(--text-muted); font-weight: 600;">Índice General de Bienestar</h3>
+            
+            <div class="score-circle-wrapper">
+              <svg class="score-circle-svg" viewBox="0 0 200 200">
+                <defs>
+                  <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="var(--primary)" />
+                    <stop offset="100%" stop-color="var(--secondary)" />
+                  </linearGradient>
+                </defs>
+                <circle class="score-circle-bg" cx="100" cy="100" r="90" />
+                <circle class="score-circle-fill" id="scoreCircleFill" cx="100" cy="100" r="90" />
+              </svg>
+
+              <div class="score-circle-text">
+                <div class="score-val" id="scoreValText">0</div>
+                <div class="score-max">de 100 pts</div>
+              </div>
+            </div>
+
+            <div class="score-level-badge" id="scoreLevelBadge">Analizando...</div>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 1rem;" id="scoreDescText"></p>
+
+            <!-- Comparison Box -->
+            <div class="comparison-box" id="historyComparisonBox" style="width: 100%; display: none;">
+              <div id="comparisonText"></div>
+            </div>
+          </div>
+
+          <!-- Category scores breakdown -->
+          <div class="glass-card">
+            <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem;">Desglose por Categoría</h3>
+            <div class="category-scores-list" id="categoryScoresContainer">
+              <!-- Rendered via script.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Educational Disclaimer Banner -->
+        <div class="disclaimer-banner">
+          <i class="fa-solid fa-triangle-exclamation" style="font-size: 1.4rem; flex-shrink: 0; margin-top: 0.2rem;"></i>
+          <div>
+            <strong>Nota Informativa Educativa:</strong> Esta aplicación es una herramienta interactiva de reflexión personal y orientación pedagógica sobre hábitos estudiantiles. No constituye un diagnóstico ni tratamiento médico o psicológico profesional.
+          </div>
+        </div>
+
+        <!-- ACTION BUTTONS POST-SURVEY -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 2rem;">
+          <button class="btn btn-secondary btn-lg" id="btnGoRecommendations" onclick="switchView('recomendaciones')">
+            <i class="fa-solid fa-lightbulb"></i> Ver Consejos Recomendados
+          </button>
+          <button class="btn btn-primary btn-lg" id="btnRetakeEvaluation" onclick="startNewEvaluation()">
+            <i class="fa-solid fa-rotate-left"></i> Repetir Evaluación
+          </button>
+          <button class="btn btn-outline btn-lg" id="btnNewUser" onclick="resetForNewUser()">
+            <i class="fa-solid fa-user-plus"></i> Nueva Evaluación / Cambiar Usuario
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. RECOMENDACIONES PERSONALIZADAS -->
+    <section id="recomendaciones" class="view-section">
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <h2 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem;">
+          Recomendaciones <span style="color: var(--primary);">Personalizadas</span>
+        </h2>
+        <p style="color: var(--text-muted);">
+          Estrategias y hábitos sugeridos en función de tus respuestas en cada área.
+        </p>
+      </div>
+
+      <div class="recommendations-grid" id="recommendationsContainer">
+        <!-- Rendered via script.js -->
+      </div>
+    </section>
+
+    <!-- 5. RULETA INTERACTIVA -->
+    <section id="ruleta" class="view-section">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <h2 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem;">
+          Ruleta de <span style="color: var(--secondary);">Micro-Retos</span>
+        </h2>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">
+          Gira la ruleta interactiva para recibir una pequeña pausa o reto saludable que puedes poner en práctica de inmediato durante tu jornada de estudio.
+        </p>
+      </div>
+
+      <div class="roulette-container">
+        <div class="wheel-wrapper">
+          <div class="wheel-pointer"></div>
+          <canvas id="rouletteCanvas" width="380" height="380"></canvas>
+        </div>
+
+        <button class="btn btn-secondary btn-lg" id="spinWheelBtn">
+          <i class="fa-solid fa-rotate-right"></i> ¡Girar Ruleta!
+        </button>
+
+        <div class="glass-card roulette-result-card" id="rouletteResultCard">
+          <span id="winningBadge" style="display: inline-block; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; color: white; margin-bottom: 0.5rem;">¡Reto Obtenido!</span>
+          <div class="roulette-result-title" id="winningTitle">Tomar Agua</div>
+          <p style="color: var(--text-muted); font-size: 0.95rem;" id="winningDesc">Explicación del reto...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. RETOS DE BIENESTAR -->
+    <section id="retos" class="view-section">
+      <div class="retos-header">
+        <div>
+          <h2 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem;">
+            Retos Diarios de <span style="color: var(--primary);">Bienestar</span>
+          </h2>
+          <p style="color: var(--text-muted);">
+            Marca las actividades a medida que las completes durante tu día de estudio.
+          </p>
+        </div>
+      </div>
+
+      <div class="retos-progress-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; font-weight: 600;">
+          <span>Progreso de Retos Diarios</span>
+          <span id="retosCounterText" style="color: var(--primary);">0 de 6 completados (0%)</span>
+        </div>
+        <div class="cat-score-bar-bg">
+          <div class="cat-score-bar-fill" id="retosProgressFill" style="width: 0%; background: linear-gradient(90deg, var(--primary), var(--secondary));"></div>
+        </div>
+      </div>
+
+      <div class="retos-grid" id="retosGrid">
+        <!-- Rendered via script.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- USER PROFILE MODAL -->
+  <div class="profile-modal" id="profileModal" style="display: none; position: fixed; inset: 0; z-index: 2000; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 1rem;">
+    <div class="glass-card profile-card" style="width: 100%; position: relative;">
+      <button id="closeProfileBtn" style="position: absolute; top: 1.2rem; right: 1.2rem; background: none; border: none; color: var(--text-muted); font-size: 1.4rem; cursor: pointer;">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <img src="assets/logo.jpg" alt="Logo Bienestar 360" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; margin-bottom: 0.8rem; border: 2px solid var(--primary);">
+        <h3 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800;">Tu Perfil Estudiantil</h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">Ingresa tus datos para personalizar tu experiencia de evaluación.</p>
+      </div>
+
+      <form id="profileForm">
+        <div class="form-group">
+          <label class="form-label" for="inputName">Nombre o Apodo</label>
+          <input type="text" id="inputName" class="form-input" placeholder="Ej: Alex" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="inputAge">Rango de Edad</label>
+          <select id="inputAge" class="form-select" required>
+            <option value="">Selecciona una opción</option>
+            <option value="10-13">10 a 13 años</option>
+            <option value="14-17">14 a 17 años</option>
+            <option value="18-22">18 a 22 años</option>
+            <option value="23+">23 años o más</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="inputGrade">Curso / Grado Académico</label>
+          <input type="text" id="inputGrade" class="form-input" placeholder="Ej: 10° Grado / Universidad 2do semestre" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+          Guardar y Comenzar Evaluación <i class="fa-solid fa-check"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="logo-brand" style="font-size: 1.2rem;">
+        <img src="assets/logo.jpg" alt="Bienestar 360°" class="logo-img" style="width: 38px; height: 38px;">
+        Bienestar <span>360°</span>
+      </div>
+      <p>Proyecto Bienestar y Alegría - Herramienta educativa interactiva para la reflexión sobre hábitos de vida saludable en el entorno escolar.</p>
+      
+      <div class="footer-links">
+        <a href="#" onclick="switchView('inicio')">Inicio</a>
+        <a href="#" onclick="switchView('evaluacion')">Evaluación</a>
+        <a href="#" onclick="switchView('ruleta')">Ruleta</a>
+        <a href="#" onclick="switchView('retos')">Retos</a>
+      </div>
+
+      <p style="font-size: 0.8rem; opacity: 0.7;">
+        Desarrollado con HTML, CSS y JavaScript Vanilla. Compatible con GitHub Pages.
+      </p>
+    </div>
+  </footer>
+
+  <!-- App Script -->
+  <script src="script.js"></script>
+</body>
+</html>
